@@ -19,7 +19,7 @@
   const nEdges =
   Object.keys(nodes).reduce((n, x) => n + Object.keys(nodes[x]).length, 0)
   const nEdgesAvg = nEdges / nNodes
-  console.log(nodes);
+
 
 /**
  * This block will create the data element.
@@ -82,7 +82,6 @@ function  drawHorizontal(){
   drawY.next();
   for(let i = pagey/25; (height + pagey)/((i+1) *25) > 1 && i < nNodes ; i++) {
      let cell = [];
-    console.log(row[i].childNodes.length,(width + pagex))
      for(let j = row[i].childNodes.length; ((width + pagex)/(j *50))>=1 &&  j < nNodes ; j++){
        cell[j] = document.createElement("td");
        cell[j].setAttribute("id", `${j}`);
@@ -115,11 +114,9 @@ window.addEventListener('scroll',() => {
 });
 
 function sortAndDisplay(i) {
-  debugger;
   var map = new Map();
   for( let k =0 ; k < data[i].length ; k ++) {
     map.set(k,(data[i][k] !='' ? data[i][k] :Number.MAX_VALUE));
-    console.log(map);
   }
   var mapAsc = new Map([...map.entries()].sort((a,b) => {
       if(a[1] == Number.MAX_VALUE && b[1] == Number.MAX_VALUE) {
